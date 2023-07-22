@@ -1,0 +1,16 @@
+<!-- inventory/templates/inventory/confirm_delete_item.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Exclusão</title>
+</head>
+<body>
+    <h1>Confirmar Exclusão</h1>
+    <p>Você tem certeza que deseja excluir o item "{{ item.model }}" do estoque?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, Excluir</button>
+        <a href="{% url 'inventory:stock_control' %}">Cancelar</a>
+    </form>
+</body>
+</html>

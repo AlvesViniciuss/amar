@@ -1,0 +1,15 @@
+<!-- inventory/templates/inventory/add_item.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adicionar Item</title>
+</head>
+<body>
+    <h1>Adicionar Item</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Adicionar</button>
+    </form>
+</body>
+</html>

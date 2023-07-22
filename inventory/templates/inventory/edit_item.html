@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Item</title>
+    <style>
+        /* Estilo do cabeçalho */
+        header {
+            background-color: #1E90FF; /* Azul "cor do mar" */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Estilo do rodapé */
+        footer {
+            background-color: #1E90FF; /* Azul "cor do mar" */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilo da tabela */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #1E90FF; /* Azul "cor do mar" */
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1E90FF; /* Azul "cor do mar" */
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Estilo do botão */
+        .button {
+            display: inline-block;
+            background-color: #1E90FF; /* Verde */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* Alinhamento dos campos de input */
+        .form-container {
+            display: table;
+            width: 50%;
+        }
+
+        .form-row {
+            display: table-row;
+        }
+
+        .form-row label,
+        .form-row input {
+            display: table-cell;
+            padding: 8px;
+            border: 1px solid #1E90FF; /* Azul "cor do mar" */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Controle de Estoque</h1>
+    </header>
+
+    <h1>Editar Item</h1>
+    <form method="post" class="form-container">
+        {% csrf_token %}
+        <div class="form-row">
+            <label for="{{ form.data.id_for_label }}">Data:</label>
+            {{ form.data }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.modelo.id_for_label }}">Modelo:</label>
+            {{ form.modelo }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.cor.id_for_label }}">Cor:</label>
+            {{ form.cor }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.tamanho.id_for_label }}">Tamanho:</label>
+            {{ form.tamanho }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.valor.id_for_label }}">Valor de Compra:</label>
+            {{ form.valor }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.valor_venda.id_for_label }}">Valor de Venda:</label>
+            {{ form.valor_venda }}
+        </div>
+        <div class="form-row">
+            <label for="{{ form.quantidade.id_for_label }}">Quantidade:</label>
+            {{ form.quantidade }}
+        </div>
+        <div class="form-row">
+            <button type="submit" class="button">Salvar</button>
+            <a href="{% url 'inventory:stock_control' %}" class="button">Cancelar</a>
+        </div>
+    </form>
+
+    <footer>
+        © {{ current_year }} Lojas Amar. Todos os direitos reservados.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Controle de Estoque</title>
+    <style>
+        /* Estilo do cabeçalho */
+        header {
+            background-color: #1E90FF; /* Azul "cor do mar" */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Estilo do rodapé */
+        footer {
+            background-color: #1E90FF; /* Azul "cor do mar" */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Estilo dos botões */
+        .button {
+            display: inline-block;
+            background-color: #1E90FF; /* Azul "cor do mar" */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #1874CD; /* Azul mais escuro ao passar o mouse */
+        }
+
+        /* Estilo da tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #F0F8FF; /* Azul claro para o cabeçalho da tabela */
+        }
+
+        tr:nth-child(even) {
+            background-color: #F0F8FF; /* Azul claro para linhas pares */
+        }
+
+        tr:hover {
+            background-color: #E6E6FA; /* Azul mais claro ao passar o mouse */
+        }
+
+        /* Estilo do container dos botões */
+        .button-container {
+            margin-top: 10px;
+        }
+
+        .button-container .button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Controle de Estoque</h1>
+    </header>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Modelo</th>
+            <th>Cor</th>
+            <th>Tamanho</th>
+            <th>Valor de Compra</th>
+            <th>Valor de Venda</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.data }}</td>
+            <td>{{ item.modelo }}</td>
+            <td>{{ item.cor }}</td>
+            <td>{{ item.tamanho }}</td>
+            <td>R$ {{ item.valor }}</td>
+            <td>R$ {{ item.valor_venda }}</td>
+            <td>{{ item.quantidade }}</td>
+            <td>
+                <a href="{% url 'inventory:edit_item' item.id %}" class="button">Editar</a>
+                <a href="{% url 'inventory:delete_item' item.id %}" class="button">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="button-container">
+        <a href="{% url 'inventory:add_item' %}" class="button">Adicionar Item</a>
+        <a href="{% url 'inventory:sales_balance' %}" class="button">Balanço das Vendas</a>
+    </div>
+
+    <footer>
+        © {{ current_year }} Lojas Amar. Todos os direitos reservados.
+    </footer>
+</body>
+</html>

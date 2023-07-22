@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Balance</title>
+</head>
+<body>
+    <h1>Balanço de Vendas</h1>
+    <table>
+        <tr>
+            <th>Modelo</th>
+            <th>Cor</th>
+            <th>Quantidade</th>
+            <th>Balanço das Vendas</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.modelo }}</td>
+            <td>{{ item.cor }}</td>
+            <td>{{ item.quantidade }}</td>
+            <td>R$ {{ item.balance }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

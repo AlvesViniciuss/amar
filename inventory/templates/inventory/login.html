@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Lojas Amar</title>
+    <style>
+        /* Estilo do body com imagem de fundo */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url("{% static 'img/img_fundo.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding-top: 50px;
+            margin: 0; /* Remover margens padrão */
+        }
+
+        /* Estilo da caixa de login */
+        .login-box {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Cor translúcida */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra leve */
+        }
+
+        /* Estilo dos campos de entrada e botão */
+        .login-box label, .login-box input[type="text"], .login-box input[type="password"], .login-box input[type="submit"] {
+            display: block;
+            width: 95%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-box input[type="submit"] {
+            background-color: #3399cc;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            width: 95%;
+        }
+
+        .login-box input[type="submit"]:hover {
+            background-color: #1e7fba;
+        }
+
+        /* Estilo do logo */
+        .logo {
+            max-width: 200px;
+            margin: 0 auto 20px; /* Centraliza o logo horizontalmente e adiciona espaço abaixo */
+            border-radius: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <img src="{% static 'img/logo.png' %}" class="logo" alt="Lojas Amar Logo">
+    <h1> </h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Usuário:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label for="password">Senha:</label>
+        <input type="password" name="password" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+    <p> <a href="{% url 'inventory:user_registration' %}">Cadastrar usuário</a></p>
+</body>
+</html>
